@@ -1,10 +1,10 @@
 /**
  * Main App Controller for the AngularJS Material Starter App
- * @param UsersDataService
+ * @param ThingsDataService
  * @param $mdSidenav
  * @constructor
  */
-function AppController(UsersDataService, $mdSidenav) {
+function AppController(ThingsDataService, $mdSidenav) {
   var self = this;
 
   self.selected     = null;
@@ -14,8 +14,8 @@ function AppController(UsersDataService, $mdSidenav) {
 
   // Load all registered users
 
-  UsersDataService
-        .loadAllUsers()
+  ThingsDataService
+        .loadAllThings()
         .then( function( users ) {
           self.users    = [].concat(users);
           self.selected = users[0];
@@ -41,4 +41,4 @@ function AppController(UsersDataService, $mdSidenav) {
   }
 }
 
-export default [ 'UsersDataService', '$mdSidenav', AppController ];
+export default [ 'ThingsDataService', '$mdSidenav', AppController ];
