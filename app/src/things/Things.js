@@ -3,7 +3,7 @@
 import ThingsDataService from 'src/things/services/ThingsDataService';
 
 import ThingsList from 'src/things/components/list/ThingsList';
-// import UserDetails from 'src/things/components/details/UserDetails';
+import ThingDetails from 'src/things/components/details/ThingDetails';
 
 // Define the AngularJS 'users' module
 
@@ -11,6 +11,6 @@ export default angular
   .module("things", ['ngMaterial'])
 
   .component(ThingsList.name, ThingsList.config)
-//   .component(UserDetails.name, UserDetails.config)
+  .component(ThingDetails.name, ThingDetails.config)
 
   .service("ThingsDataService", ThingsDataService);
