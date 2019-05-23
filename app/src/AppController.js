@@ -7,19 +7,19 @@
 function AppController(ThingsDataService, $mdSidenav) {
   var self = this;
 
-  self.selected     = null;
-  self.users        = [ ];
-  self.selectUser   = selectUser;
-  self.toggleList   = toggleUsersList;
+  self.selected = null;
+  self.things = [];
+  self.selectThing = selectThing;
+  self.toggleList = toggleThingsList;
 
   // Load all registered users
 
   ThingsDataService
-        .loadAllThings()
-        .then( function( users ) {
-          self.users    = [].concat(users);
-          self.selected = users[0];
-        });
+    .loadAllThings()
+    .then(function (things) {
+      self.things = [].concat(things);
+      self.selected = things[0];
+    });
 
   // *********************************
   // Internal methods
@@ -28,7 +28,7 @@ function AppController(ThingsDataService, $mdSidenav) {
   /**
    * Hide or Show the 'left' sideNav area
    */
-  function toggleUsersList() {
+  function toggleThingsList() {
     $mdSidenav('left').toggle();
   }
 
@@ -36,9 +36,9 @@ function AppController(ThingsDataService, $mdSidenav) {
    * Select the current avatars
    * @param menuId
    */
-  function selectUser ( user ) {
-    self.selected = angular.isNumber(user) ? $scope.users[user] : user;
+  function selectThing(thing) {
+    self.selected = angular.isNumber(thing) ? $scope.things[thing] : thing;
   }
 }
 
-export default [ 'ThingsDataService', '$mdSidenav', AppController ];
+export default ['ThingsDataService', '$mdSidenav', AppController];
